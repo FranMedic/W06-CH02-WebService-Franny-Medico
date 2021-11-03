@@ -21,18 +21,24 @@ if (program.opts().port && !Number.isNaN(program.opts().port)) {
 server.listen(port);
 
 server.on("request", (request, response) => {
-  const parsedUrl = url.parse(request.url, true);
-  const { a, b } = parsedUrl.query;
-  response.setHeader("Content-Type", "text/html");
+  if (request.url !== "/favicon.ico") {
+    const parsedUrl = url.parse(request.url, true);
+    const { a, b } = parsedUrl.query;
+    response.setHeader("Content-Type", "text/html");
 
-  if (
-    parsedUrl.pathname === "/calculator/" ||
-    parsedUrl.pathname === "/calculator"
-  ) {
-    response.write(calculator(a, b));
-  } else {
-    response.write("<h1>CATACLISMO!!, ERROR!!, NO EXISTIMOS AIUDA!!!</h1>");
+    if (
+      parsedUrl.pathname === "/calculator/" ||
+      parsedUrl.pathname === "/calculator"
+    ) {
+      response.statusCode = 200;
+      response.write(calculator(a, b));
+    } else {
+      response.statusCode = 404;
+      response.write(
+        "<h1>CATACLISMO!!, ERROR!! AYUDAAA!!!!! NO EXISTIMOS </h1>"
+      );
+    }
+
+    response.end();
   }
-
-  response.end();
 });
