@@ -18,5 +18,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.2",
     "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
   }
 }
