@@ -8,7 +8,8 @@ const {
 const calculator = (numberOne, numberTwo) => {
   let htmlCreated;
   if (Number.isNaN(+numberOne) || Number.isNaN(+numberTwo)) {
-    htmlCreated = "<p>CATACLISMO, ERROR AYUDAAA!!!!! </p>";
+    htmlCreated =
+      "<h1>CATACLISMO!!, ERROR!! AYUDAAA!!!!! ah no que los parametros tan mal UWU</h1>";
   } else {
     htmlCreated = `<!DOCTYPE html>
 <html lang="es-ES">
